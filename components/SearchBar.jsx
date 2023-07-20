@@ -8,8 +8,8 @@ function SearchBar() {
             <div className='my-auto z-10'>
                 <AiOutlineSearch />
             </div>
-            <div>
-                <input type="text" placeholder='search' className='pl-10 w-[100vh] rounded-full py-2 ml-[-5%]  border-[1.7px]'/>
+            <div className='my-auto'>
+                <input type="text" placeholder='search' className='pl-[8%] w-[100vh] rounded-full py-2 ml-[-5%] border-[1.7px]'/>
             </div>
         </div>
     </div>
