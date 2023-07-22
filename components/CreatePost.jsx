@@ -21,27 +21,32 @@ function CreatePost() {
       }),
     });
     if (req != 200) {
-      setToastMessage("Creating New post failed");
-      setToast(true);
+      setTimeout(() => {
+        setToastMessage("Creating New post failed");
+        setToast(true);
+      }, 1000);
     } else {
-      setToastMessage("Post created successfully");
-      setToast(true);
+      setTimeout(() => {
+        setToastMessage("Post created successfully");
+        setToast(true);
+      }, 1000);
     }
   };
 
   return (
     <div>
-      {toast &&
-        setTimeout(() => {
-          <div className="shadow-sm fixed top-5 right-5">
-            <div className="flex flex-row space-x-3">
-              <div className="rounded-sm bg-white py-2 w-fit px-6">
-                {toastMessage}
-              </div>
-              <div className="mt-[-15%]">x</div>
+      {toast && (
+        <div className="shadow-lg fixed top-5 right-5 rounded-sm">
+          <div className="flex flex-row space-x-3">
+            <div className="rounded-sm bg-white py-2 w-fit px-6">
+              {toastMessage}
             </div>
-          </div>;
-        }, 3000)}
+            <div className="mt-[-5%] text-white"
+            onClick={setToast(false)}
+            >x</div>
+          </div>
+        </div>
+      )}
       <div className="flex flex-row space-x-2">
         <div className="font-bold mb-2">CREATE A POST</div>
         <div>

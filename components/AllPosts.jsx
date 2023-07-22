@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AiFillDelete } from "react-icons/ai";
+import { AiFillDelete, AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import { GrUpdate } from "react-icons/gr";
 import { Configurations } from "./config";
 
@@ -22,16 +22,18 @@ function AllPosts() {
 
   const handleDeletePost = async (id) => {
     try {
-      const response = await fetch(`${Configurations.base_url}/post/delete/${id}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `${Configurations.base_url}/post/delete/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
       const data = await response.json();
       console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
-
 
   return (
     <div>
@@ -51,10 +53,12 @@ function AllPosts() {
                   </div>
                 </div>
                 <div className="flex flex-row space-x-3 w-[20%]">
-                  <div className="my-auto hover:cursor-pointer hover:text-red-600" onClick={() => {
-                    handleDeletePost(post?.id)
-                  }
-                  }>
+                  <div
+                    className="my-auto hover:cursor-pointer hover:text-red-600"
+                    onClick={() => {
+                      handleDeletePost(post?.id);
+                    }}
+                  >
                     <AiFillDelete />
                   </div>
                   <div className="my-auto hover:cursor-pointer hover:text-green-600">
@@ -65,7 +69,17 @@ function AllPosts() {
             </div>
           );
         })}
-        <div className="text-center text-sm p-4">{"Post 3 out of 10"}</div>
+        <div className="flex flex-row space-x-5 flex items-center justify-center">
+          <div className="rounded-sm bg-[#ced0fa] w-fit px-2 py-2 hover:cursor-pointer hover:bg-[#4850ea]">
+            <AiOutlineLeft />
+          </div>
+          <div className="rounded-sm bg-[#ced0fa] w-fit px-2 py-2 hover:cursor-pointer hover:bg-[#4850ea]">
+            <AiOutlineRight />
+          </div>
+        </div>
+        <div className="text-center text-sm p-4">
+          Post {fetchedPosts?.length} out of {fetchedPosts?.length}
+        </div>
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 app.get('/posts', async (req, res) => {
     const posts = await postsModel.getAllPosts();
     res.send(posts);
-});
+}); 
 
 app.post('/post/create', async (req, res) => {
     const post = await postsModel.createPost(req.body);
